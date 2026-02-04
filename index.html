@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集</title>
+    <style>
+        /* --- 這裡保留原本的 CSS 設定，並新增手機版樣式 --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --nav-height: 60px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: sans-serif; line-height: 1.6; color: var(--text-color); background: var(--bg-color); }
+
+        /* 導覽列 */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--nav-height);
+            background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%;
+        }
+        .logo { font-weight: bold; font-size: 1.5rem; color: var(--primary-color); }
+        
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: var(--text-color); transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        /* 手機版漢堡按鈕 (預設隱藏) */
+        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
+
+        /* 區塊通用 */
+        section { padding: 80px 5%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        h2 { font-size: 2.5rem; margin-bottom: 40px; border-bottom: 4px solid var(--accent-color); display: inline-block; }
+
+        /* 首頁 */
+        #home { background: linear-gradient(135deg, #ece9e6, #ffffff); text-align: center; }
+        #home h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        
+        /* 按鈕樣式 (連結用) */
+        .btn {
+            display: inline-block; padding: 10px 30px; background: var(--accent-color);
+            color: #fff; text-decoration: none; border-radius: 25px; margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #2980b9; transform: scale(1.05); }
+
+        /* 作品集 Grid */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; }
+        .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s; display: flex; flex-direction: column;}
+        .card:hover { transform: translateY(-5px); }
+        .card-img { height: 200px; background: #ddd; display: flex; align-items: center; justify-content: center; }
+        .card-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-info h3 { margin-bottom: 10px; }
+        
+        /* 這裡讓作品介紹中的按鈕置底 */
+        .card-info .btn { margin-top: auto; text-align: center; }
+
+        /* --- 手機版 RWD 與互動樣式 --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; } /* 顯示漢堡按鈕 */
+            
+            nav ul {
+                display: none; /* 預設隱藏選單 */
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            nav ul.active { display: flex; /* 透過 JS 加入 active 類別時顯示 */ }
+            nav ul li { margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MyPortfolio</div>
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於</a></li>
+                <li><a href="#portfolio">作品</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>深海小店</h1>
+        <p>插畫/繪師：伏羽希</p>
+        <a href="#portfolio" class="btn">作品</a>
+    </section>
+
+    <section id="about">
+        <h2>關於我</h2>
+        <p>是一位插畫繪師，主要繪製Q版、正比...等繪製。</p>
+        <br>
+        <p>使用工具：CLIP STUDIO PAINT、Live2D Cubism</p>
+        <br>
+        <p>其他連結：<a href="https://lit.link/zh-tw/Sakura24333" target="_blank">link</a></p>
+
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>作品展示</h2>
+        <div class="portfolio-grid">
+            
+            <div class="card">
+                <div class="card-img">作品截圖 1</div>
+                <div class="card-info">
+                    <h3>Q版</h3>
+                    <p>有分簡化與精緻繪製，簡化很多縮小可能看不到的飾品會以色塊顯示；精緻會保留飾品大致原樣。</p>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">作品截圖 2</div>
+                <div class="card-info">
+                    <h3>正比</h3>
+                    <p>分簡化與精緻繪製，簡化不會過第三遍稿，可能偏向偽正比與簡化上色；精緻會過三遍稿，繪製時間略長。</p>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">作品截圖 3</div>
+                <div class="card-info">
+                    <h3>板模(進行中)</h3>
+                    <p>目前板模會在「喵與契」<a href="https://discord.gg/uas3ACjpwX" target="_blank">喵與契Discord</a></p>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">作品截圖 4</div>
+                <div class="card-info">
+                    <h3>L2D建模</h3>
+                    <p>你看到了，這裡空空的<a href="連結" target="_blank">預留</a></p>
+
+                </div>
+            </div>
+
+                    <p><a href="https://www.pixiv.net/artworks/140722957" target="_blank">pixiv</a></p>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>聯絡方式</h2>
+        <p><a href="https://discord.gg/xBFmeqZWhm" target="_blank">Discord</a></p>
+        <p>Email: yysgn1234@gmail.com</p>
+
+        </div>
+
+    </section>
+
+    <script>
+        // 1. 抓取 HTML 元素
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        // 2. 監聽點擊事件：當漢堡按鈕被點擊時
+        menuToggle.addEventListener('click', () => {
+            // 切換 active 類別 (原本沒有就加上，有就移除)
+            navList.classList.toggle('active');
+        });
+
+        // 3. 額外功能：點擊選單項目後，自動收起選單 (優化手機體驗)
+        document.querySelectorAll('.nav-list li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 伏羽希 版權所有</p>
+    </footer>
+
+</body>
+</html>
